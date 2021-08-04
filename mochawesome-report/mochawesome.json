@@ -1,0 +1,118 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2019-09-26T13:41:15.372Z",
+    "end": "2019-09-26T13:41:17.122Z",
+    "duration": 1750,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "50316aeb-8468-4a90-8981-7d7c487e6893",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4d999c1a-5e72-474d-a0a8-1a2f7db05ff9",
+          "title": "User - Activities",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "User - Activities",
+              "fullTitle": "User - Activities User - Activities",
+              "timedOut": null,
+              "duration": 1072,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var query = \"query AllHistory {\\n            submissions(first: 500, status: [ineligible, completed, not_approved, unpaid, final]) {\\n                id,\\n                status,\\n                payoutValue,\\n                payoutCurrency,\\n                rejectReason,\\n                createdAt,\\n                userPayoutCurrencyValue,\\n             project {\\n                    id,\\n                    name,\\n                    forPayment\\n                },\\n            },\\n            viewer {\\n                projectEarnings,\\n                invitesEarnings,\\n                payoutCurrency,\\n                payoutCurrencySymbol,\\n                totalSubmissions,\\n                  id\\n            },\\n            invites(first: 50) {\\n                id,\\n                status,\\n                payoutValue,\\n                userPayoutCurrencyValue,\\n                payoutCurrency,\\n                createdAt,\\n                referredUser {\\n                    phoneNumberPrefix,\\n                    phoneNumber\\n                }\\n            }\\n        }\";\ncy.request({\n  method: 'POST',\n  url: '/graphql',\n  headers: {\n    'Content-Type': 'application/json',\n    'Accept': 'application/json',\n    'Authorization': 'Bearer ' + Cypress.env('login_token')\n  },\n  body: {\n    query: query\n  }\n}).then(function (response) {\n  expect(response.status).to.eq(200);\n  if (Array.isArray(response.body.data.submissions) && response.body.data.submissions.length > 0) {\n    expect(response.body.data.submissions).not.to.be.empty;\n  } else expect(response.body.data.submissions).to.be.empty;\n});",
+              "err": {},
+              "uuid": "6f02065d-ee07-43fc-9e62-8c8adbd019c0",
+              "parentUUID": "4d999c1a-5e72-474d-a0a8-1a2f7db05ff9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User - Activities",
+              "fullTitle": "User - Activities User - Activities",
+              "timedOut": null,
+              "duration": 657,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var query = \"query AllHistory {\\n            submissions(first: 500, status: [ineligible, completed, not_approved, unpaid, final]) {\\n                id,\\n                status,\\n                payoutValue,\\n                payoutCurrency,\\n                rejectReason,\\n                createdAt,\\n                userPayoutCurrencyValue,\\n             project {\\n                    id,\\n                    name,\\n                    forPayment\\n                },\\n            },\\n            viewer {\\n                projectEarnings,\\n                invitesEarnings,\\n                payoutCurrency,\\n                payoutCurrencySymbol,\\n                totalSubmissions,\\n                  id\\n            },\\n            invites(first: 50) {\\n                id,\\n                status,\\n                payoutValue,\\n                userPayoutCurrencyValue,\\n                payoutCurrency,\\n                createdAt,\\n                referredUser {\\n                    phoneNumberPrefix,\\n                    phoneNumber\\n                }\\n            }\\n        }\";\ncy.request({\n  method: 'POST',\n  url: '/graphql',\n  headers: {\n    'Content-Type': 'application/json',\n    'Accept': 'application/json',\n    'Authorization': 'Bearer ' + Cypress.env('login_token') + 'Test'\n  },\n  body: {\n    query: query\n  },\n  failOnStatusCode: false\n}).then(function (response) {\n  expect(response.status).to.eq(401);\n  expect(response.body).to.have.property('message', 'Invalid Authorization');\n});",
+              "err": {},
+              "uuid": "fdcc2cb1-7221-4a3b-9c6f-49a1a5d61ab7",
+              "parentUUID": "4d999c1a-5e72-474d-a0a8-1a2f7db05ff9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6f02065d-ee07-43fc-9e62-8c8adbd019c0",
+            "fdcc2cb1-7221-4a3b-9c6f-49a1a5d61ab7"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1729,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "5.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false
+      },
+      "version": "4.1.0"
+    },
+    "marge": {
+      "options": {},
+      "version": "4.0.1"
+    }
+  }
+}

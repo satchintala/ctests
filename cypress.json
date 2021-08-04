@@ -1,0 +1,17 @@
+{
+  "baseUrl": "https://api-d3ffeb69.dev-bees.com",
+  "reporter": "mochawesome",
+  "env": {
+    "iOS_key": "o4vo64fqgq_ios",
+    "android_key": "djib8ao2qj_android",
+    "verification_code": "833335",
+    "lon_latitue": "51.4200431",
+    "lon_longitude": "-0.3166893",
+    "admin_url": "https://admin.streetbees.com",
+    "admin_userName": "satheesh@streetbees.com",
+    "admin_password": "StreetbeesBestBees",
+    "test_baseurl": "https://sb-admin-sb-api-pr-1834.sb-admin.dev-bees.com",
+    "test_adminurl": "http://admin-d3ffeb69.dev-bees.com"
+  },
+  "projectId": "pfqktt"
+}
