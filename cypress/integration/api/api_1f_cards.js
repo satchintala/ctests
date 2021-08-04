@@ -43,8 +43,11 @@ describe('Cards', () => {
             .its("status")
             .should("eq", 200);
 
-        cy.server();
-        cy.route("GET", "/projects/new").as("new");
+        cy.server()
+            .route("GET", "/projects/new").as("new");
+
+        cy.server()
+            .route("GET", "/project_codes.json?q=").as("codes");
 
         cy.get('.page-header a:nth-child(4) > span')
             .should("be.visible")
@@ -53,6 +56,11 @@ describe('Cards', () => {
         cy.wait("@new")
             .its("status")
             .should("eq", 200);
+
+        cy.wait("@codes", { timeout: 60000 }, { multiple: true })
+            .its("status")
+            .should("eq", 200);
+
 
 
 
